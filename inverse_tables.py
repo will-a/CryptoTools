@@ -20,6 +20,10 @@ def extendedGcd(r0, r1):
 
 
 def find_add_inv(ring_size: int) -> dict:
+    """
+    Finds the additive inverses of all numbers in the ring of size
+    ring_size and returns them in dictionary format.
+    """
     d = dict()
     for i in range(ring_size):
         d[i] = ring_size - i
@@ -27,6 +31,10 @@ def find_add_inv(ring_size: int) -> dict:
 
 
 def find_mul_inv(ring_size: int) -> dict:
+    """
+    Finds the multiplicative inverses of all numbers in the ring of size
+    ring_size and returns them in dictionary format.
+    """
     d = dict()
     for i in range(ring_size):
         res, x, y = extendedGcd(i, ring_size)
@@ -36,6 +44,9 @@ def find_mul_inv(ring_size: int) -> dict:
 
 
 def print_inv_dict(d: dict) -> None:
+    """
+    Prints the dictionary of inverses created by one of the above functions.
+    """
     ring_size = list(d.keys())[-1] + 1
     max_num_digits = int(math.log10(ring_size - 1)) + 1
     print('{:>{width}} | Inverse'.format("Value", width=max_num_digits + 4))
