@@ -1,4 +1,5 @@
 import math
+import argparse
 
 
 def add_inv_table(ring_size: int) -> None:
@@ -34,7 +35,21 @@ def mul_inv_table(ring_size: int) -> None:
 
 
 def main():
-    add_inv_table(10)
+    parser = argparse.ArgumentParser(description="Calculates and displays additive and multiplicative inverses and tables.")
+    parser.add_argument('ringsize', type=int)
+    parser.add_argument('-a', action='store_true', help='Print the additive inverses of the given number.')
+    parser.add_argument('-m', action='store_true', help='Print the multiplicative inverses of the given number.')
+    parser.add_argument('-t', action='store_true', help='Print the table for the inverse selection')
+
+    parsed_args = parser.parse_args()
+    if parsed_args.ringsize <= 0:
+        print("Ring size must be greater than zero.")
+        return
+
+    if parsed_args.a and parsed_args.t:
+        add_inv_table(parsed_args.ringsize)
+    if parsed_args.m and parsed_args.t:
+        mul_inv_table(parsed_args.ringsize)
 
 
 if __name__ == "__main__":
