@@ -1,3 +1,4 @@
+# author: Will Anderson
 import math
 import argparse
 
