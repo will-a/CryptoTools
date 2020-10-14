@@ -38,7 +38,7 @@ def find_mul_inv(ring_size: int) -> dict:
 def print_inv_dict(d: dict) -> None:
     ring_size = list(d.keys())[-1] + 1
     max_num_digits = int(math.log10(ring_size - 1)) + 1
-    print('{:>{width}} | Inverse'.format("Value", width=max_num_digits))
+    print('{:>{width}} | Inverse'.format("Value", width=max_num_digits + 4))
     for k in d.keys():
         if d[k] != []:
             print('{:>{width}} | {}'.format(k, d[k], width=max_num_digits + 4))
@@ -64,15 +64,15 @@ def add_inv_table(ring_size: int) -> None:
 def mul_inv_table(ring_size: int) -> None:
     max_num_digits = int(math.log10(ring_size - 1)) + 1
     col_header = ""
-    for i in range(ring_size):
+    for i in range(1, ring_size):
         col_header += '{:>{width}}'.format(str(i), width=max_num_digits) + "  "
     print(" " * (max_num_digits + 3) + col_header + "\n" + "-" * (len(col_header) + 4))
-    for i in range(ring_size):
+    for i in range(1, ring_size):
         if i == 0:
             print(i, " " * (max_num_digits - 1) + "| ", end="")
         else:
             print(i, (" " * (max_num_digits-int(math.log10(i))-1)) + "| ", end="")
-        for j in range(ring_size):
+        for j in range(1, ring_size):
             print('{:>{width}}'.format(str((i * j) % ring_size), width=max_num_digits), end="  ")
         print()
 
