@@ -69,5 +69,5 @@ def primrs(m):
     return res
 
 
-# print(findorder(33))
-print(primrs(31))
+# print(findorder(37))
+print(len(primrs(23)))

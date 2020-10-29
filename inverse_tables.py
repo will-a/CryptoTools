@@ -1,4 +1,4 @@
-# author: Will Anderson 
+# author: Will Anderson
 import math
 import argparse
 
@@ -37,10 +37,14 @@ def find_mul_inv(ring_size: int) -> dict:
     ring_size and returns them in dictionary format.
     """
     d = dict()
+
     for i in range(ring_size):
         res, x, y = extendedGcd(i, ring_size)
         if res == 1:
             d[i] = (x % ring_size + ring_size) % ring_size
+
+        # d[i] = [j for j in range(ring_size) if (i * j) % ring_size == 1]
+
     return d
 
 
